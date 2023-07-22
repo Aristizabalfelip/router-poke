@@ -3,8 +3,6 @@ import { useState } from 'react'
 import { useEffect } from 'react'
 import Card from './Card'
 
-
-
 const getData = async (url) => {
     const res = await fetch(url)
     return res.json()
@@ -31,11 +29,8 @@ function Home() {
         awaitFunction(`https://pokeapi.co/api/v2/pokemon?limit=10&offset=0`)
     }, [])
 
-
-
-
     return (
-        <div>
+        <div className='flex gap-5 mt-3 ml-3 '>
          {
                arrPokemons.map((pokemon, i) => {
                 return < Card
@@ -45,7 +40,6 @@ function Home() {
                 img = {pokemon.sprites.front_default}
                  />
                })
-              
          }
         </div>
     )

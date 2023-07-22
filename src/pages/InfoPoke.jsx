@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react';
 import { useEffect } from 'react'
-import { useParams } from 'react-router-dom';
+import { Outlet, useParams } from 'react-router-dom';
 import SeePokemon from '../components/SeePokemon'
 
 const getData = async (url) => {
@@ -9,8 +9,7 @@ const getData = async (url) => {
     return res.json()
 }
 
-
-function InfoPoke() {
+function InfoPoke( {setMovs}) {
     const { id } = useParams();
     const [pokemon, setPokemon] = useState({})
 
@@ -19,21 +18,21 @@ function InfoPoke() {
         return pokemon
     }
 
-    useEffect(async() => {
-        awaitFunction(`https://pokeapi.co/api/v2/pokemon/${id}`).then(res => setPokemon(res))
-        // getDataFirebase().then(res => setList(res))
+    useEffect(() => {
+        awaitFunction(`https://pokeapi.co/api/v2/pokemon/${id}`).then(res => setPokemon(res)) 
     }, [])
 
-console.log(pokemon.sprites?.front_default);
+    setMovs(pokemon.moves)
 
     return (
-        <div>
+        <div className='flex justify-center gap-20 items-center mt-3'>   
             <SeePokemon 
             id = {pokemon.id}
             name = {pokemon.name}
             img = {pokemon.sprites?.front_default}
-            habilities = {pokemon.habilities}
-            movimientos = {pokemon.movimientos} />
+            abilities = {pokemon.abilities}
+            movimientos = {pokemon.moves} />
+            < Outlet/>
         </div>
     )
 }

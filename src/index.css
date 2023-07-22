@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.radial-gradient {
+    background-image: radial-gradient(rgb(255, 0, 204) 10px, rgb(222, 222, 23) 30%, #1e90ff 50%);
+    padding-top: 20px;
+    padding-bottom: 10px;
+    border-radius: 10px;
+}

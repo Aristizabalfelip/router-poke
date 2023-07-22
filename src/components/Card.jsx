@@ -2,12 +2,13 @@ import React from 'react'
 import { Link } from "react-router-dom";
 
 function Card({number,name,img}) {
+
   return (
-    <div>
+    <div className='flex flex-col radial-gradient items-center'>
         <p>{number} </p>
-        <p>name: {name}</p>
+        <p>{name}</p>
         <img src={img} alt="" />
-        <button><Link to={`/infoPoke/${number}`}>Ver</Link> </button>
+        <button className='rounded-full ... border-2 p-1 w-20'><Link to={`/infoPoke/${number}`}>Ver</Link> </button>
     </div>
   )
 }
